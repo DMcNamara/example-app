@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
-import { environment } from '../../environments/environment';
-import { Book } from '../models/book';
+import { environment } from '../../../environments/environment';
+import { Book } from './books/book.model';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -38,10 +38,10 @@ import { combineReducers } from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-import * as fromSearch from './search';
-import * as fromBooks from './books';
-import * as fromCollection from './collection';
-import * as fromLayout from './layout';
+import * as fromSearch from './search/search.reducers';
+import * as fromBooks from './books/book.reducers';
+import * as fromCollection from './collections/collection.reducers';
+import * as fromLayout from './layout/layout.reducers';
 
 
 /**
@@ -69,7 +69,7 @@ const reducers = {
   books: fromBooks.reducer,
   collection: fromCollection.reducer,
   layout: fromLayout.reducer,
-  router: fromRouter.routerReducer,
+  router: fromRouter.routerReducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -78,8 +78,7 @@ const productionReducer: ActionReducer<State> = combineReducers(reducers);
 export function reducer(state: any, action: any) {
   if (environment.production) {
     return productionReducer(state, action);
-  }
-  else {
+   } else {
     return developmentReducer(state, action);
   }
 }

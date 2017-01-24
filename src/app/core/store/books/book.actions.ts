@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Book } from '../core/store/books/book.model';
+import { Book } from './book.model';
 
 /**
  * For each action type in an action group, make a simple

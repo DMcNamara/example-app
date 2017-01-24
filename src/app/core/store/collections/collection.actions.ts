@@ -1,7 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Book } from '../core/store/books/book.model';
-import { type } from '../util';
-
+import { Book } from '../books/book.model';
 
 
 export const ADD_BOOK =            '[Collection] Add Book';

@@ -1,5 +1,7 @@
+// this should prolly be a subfolder inside book -d
+
 import { createSelector } from 'reselect';
-import * as book from '../actions/book';
+import * as book from '../books/book.actions';
 
 
 export interface State {
@@ -8,15 +10,15 @@ export interface State {
   query: string;
 };
 
-const initialState: State = {
-  ids: [],
+const initialState = {
+  ids: <string[]>[],
   loading: false,
   query: ''
 };
 
 export function reducer(state = initialState, action: book.Actions): State {
   switch (action.type) {
-    case book.ActionTypes.SEARCH: {
+    case book.SEARCH: {
       const query = action.payload;
 
       if (query === '') {
@@ -33,7 +35,7 @@ export function reducer(state = initialState, action: book.Actions): State {
       });
     }
 
-    case book.ActionTypes.SEARCH_COMPLETE: {
+    case book.SEARCH_COMPLETE: {
       const books = action.payload;
 
       return {

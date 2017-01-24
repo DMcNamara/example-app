@@ -12,8 +12,8 @@ import { Observable } from 'rxjs/Observable';
 import { defer } from 'rxjs/observable/defer';
 import { of } from 'rxjs/observable/of';
 
-import * as collection from '../actions/collection';
-import { Book } from '../models/book';
+import * as collection from './collection.actions';
+import { Book } from '../books/book.model';
 
 
 @Injectable()
@@ -24,7 +24,7 @@ export class CollectionEffects {
    * This effect does not yield any actions back to the store. Set
    * `dispatch` to false to hint to @ngrx/effects that it should
    * ignore any elements of this effect stream.
-   * 
+   *
    * The `defer` observable accepts an observable factory function
    * that is called when the observable is subscribed to.
    * Wrapping the database open call in `defer` makes
@@ -41,7 +41,7 @@ export class CollectionEffects {
    */
   @Effect()
   loadCollection$: Observable<Action> = this.actions$
-    .ofType(collection.ActionTypes.LOAD)
+    .ofType(collection.LOAD)
     .startWith(new collection.LoadAction())
     .switchMap(() =>
       this.db.query('books')
@@ -52,7 +52,7 @@ export class CollectionEffects {
 
   @Effect()
   addBookToCollection$: Observable<Action> = this.actions$
-    .ofType(collection.ActionTypes.ADD_BOOK)
+    .ofType(collection.ADD_BOOK)
     .map((action: collection.AddBookAction) => action.payload)
     .mergeMap(book =>
       this.db.insert('books', [ book ])
@@ -63,7 +63,7 @@ export class CollectionEffects {
 
   @Effect()
   removeBookFromCollection$: Observable<Action> = this.actions$
-    .ofType(collection.ActionTypes.REMOVE_BOOK)
+    .ofType(collection.REMOVE_BOOK)
     .map((action: collection.RemoveBookAction) => action.payload)
     .mergeMap(book =>
       this.db.executeWrite('books', 'delete', [ book.id ])

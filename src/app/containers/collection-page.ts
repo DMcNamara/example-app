@@ -3,8 +3,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromRoot from '../reducers';
-import { Book } from '../models/book';
+import * as fromRoot from '../core/store';
+import { Book } from '../core/store/books/book.model';
 
 
 @Component({
@@ -20,7 +20,7 @@ import { Book } from '../models/book';
   /**
    * Container components are permitted to have just enough styles
    * to bring the view together. If the number of styles grow,
-   * consider breaking them out into presentational 
+   * consider breaking them out into presentational
    * components.
    */
   styles: [`

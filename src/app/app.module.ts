@@ -11,11 +11,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialModule } from '@angular/material';
 
 import { ComponentsModule } from './components';
-import { BookEffects } from './effects/book';
-import { CollectionEffects } from './effects/collection';
+import { BookEffects } from './core/store/books/book.effects';
+import { CollectionEffects } from './core/store/collections/collection.effects';
 import { BookExistsGuard } from './guards/book-exists';
 
 import { AppComponent } from './containers/app';
+import { CoreModule } from './core/core.module';
 import { FindBookPageComponent } from './containers/find-book-page';
 import { ViewBookPageComponent } from './containers/view-book-page';
 import { SelectedBookPageComponent } from './containers/selected-book-page';
@@ -25,7 +26,7 @@ import { NotFoundPageComponent } from './containers/not-found-page';
 import { GoogleBooksService } from './services/google-books';
 
 import { routes } from './routes';
-import { reducer } from './reducers';
+import { reducer } from './core/store';
 import { schema } from './db';
 
 
@@ -33,6 +34,7 @@ import { schema } from './db';
 @NgModule({
   imports: [
     CommonModule,
+    CoreModule,
     BrowserModule,
     MaterialModule.forRoot(),
     ComponentsModule,
@@ -57,10 +59,10 @@ import { schema } from './db';
      * Store devtools instrument the store retaining past versions of state
      * and recalculating new states. This enables powerful time-travel
      * debugging.
-     * 
+     *
      * To use the debugger, install the Redux Devtools extension for either
      * Chrome or Firefox
-     * 
+     *
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
     StoreDevtoolsModule.instrumentOnlyWithExtension(),

@@ -4,9 +4,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromRoot from '../reducers';
-import * as book from '../actions/book';
-import { Book } from '../models/book';
+import * as fromRoot from '../core/store';
+import * as book from '../core/store/books/book.actions';
+import { Book } from '../core/store/books/book.model';
 
 
 @Component({

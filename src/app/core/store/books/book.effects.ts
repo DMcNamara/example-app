@@ -11,8 +11,8 @@ import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { of } from 'rxjs/observable/of';
 
-import { GoogleBooksService } from '../services/google-books';
-import * as book from '../actions/book';
+import { GoogleBooksService } from '../../../services/google-books';
+import * as book from './book.actions';
 
 
 /**
@@ -36,7 +36,7 @@ export class BookEffects {
 
   @Effect()
   search$: Observable<Action> = this.actions$
-    .ofType(book.ActionTypes.SEARCH)
+    .ofType(book.SEARCH)
     .debounceTime(300)
     .map((action: book.SearchAction) => action.payload)
     .switchMap(query => {
@@ -44,7 +44,7 @@ export class BookEffects {
         return empty();
       }
 
-      const nextSearch$ = this.actions$.ofType(book.ActionTypes.SEARCH).skip(1);
+      const nextSearch$ = this.actions$.ofType(book.SEARCH).skip(1);
 
       return this.googleBooks.searchBooks(query)
         .takeUntil(nextSearch$)

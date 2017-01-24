@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../reducers';
-import * as layout from '../actions/layout';
+import * as fromRoot from '../core/store';
+import * as layout from '../core/store/layout/layout.actions';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class AppComponent {
     /**
      * All state updates are handled through dispatched actions in 'container'
      * components. This provides a clear, reproducible history of state
-     * updates and user interaction through the life of our 
+     * updates and user interaction through the life of our
      * application.
      */
     this.store.dispatch(new layout.CloseSidenavAction());
