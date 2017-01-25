@@ -7,8 +7,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { AddCommasPipe } from './pipes/add-commas';
-import { EllipsisPipe } from './pipes/ellipsis';
+import { AddCommasPipe } from './pipes/add-commas.pipe';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 @NgModule({
   imports:      [ CommonModule ],

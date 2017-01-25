@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 import { BookAuthorsComponent } from './book-authors';
 import { BookDetailComponent } from './book-detail';
@@ -13,8 +14,6 @@ import { LayoutComponent } from './layout';
 import { NavItemComponent } from './nav-item';
 import { SidenavComponent } from './sidenav';
 import { ToolbarComponent } from './toolbar';
-
-import { PipesModule } from '../pipes';
 
 
 export const COMPONENTS = [
@@ -36,7 +35,7 @@ export const COMPONENTS = [
     ReactiveFormsModule,
     MaterialModule,
     RouterModule,
-    PipesModule,
+    SharedModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS

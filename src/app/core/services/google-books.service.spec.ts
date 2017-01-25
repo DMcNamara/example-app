@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { GoogleBooksService } from './google-books';
+import { GoogleBooksService } from './google-books.service';
 
 describe('Service: GoogleBooks', () => {
   let service: GoogleBooksService = null;

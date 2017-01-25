@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { EllipsisPipe } from './ellipsis';
+import { EllipsisPipe } from './ellipsis.pipe';
 
 describe('Pipe: Ellipsis', () => {
   let pipe: EllipsisPipe;
