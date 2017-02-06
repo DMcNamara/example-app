@@ -1,6 +1,5 @@
 // this should prolly be a subfolder inside book -d
 
-import { createSelector } from 'reselect';
 import * as book from '../books/book.actions';
 
 

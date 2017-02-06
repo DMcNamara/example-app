@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
 import { environment } from '../../../environments/environment';
-import { Book } from './books/book.model';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -78,7 +77,7 @@ const productionReducer: ActionReducer<State> = combineReducers(reducers);
 export function reducer(state: any, action: any) {
   if (environment.production) {
     return productionReducer(state, action);
-   } else {
+  } else {
     return developmentReducer(state, action);
   }
 }
@@ -116,10 +115,10 @@ export const getBooksState = (state: State) => state.books;
  * observable. Each subscription to the resultant observable
  * is shared across all subscribers.
  */
- export const getBookEntities = createSelector(getBooksState, fromBooks.getEntities);
- export const getBookIds = createSelector(getBooksState, fromBooks.getIds);
- export const getSelectedBookId = createSelector(getBooksState, fromBooks.getSelectedId);
- export const getSelectedBook = createSelector(getBooksState, fromBooks.getSelected);
+export const getBookEntities = createSelector(getBooksState, fromBooks.getEntities);
+export const getBookIds = createSelector(getBooksState, fromBooks.getIds);
+export const getSelectedBookId = createSelector(getBooksState, fromBooks.getSelectedId);
+export const getSelectedBook = createSelector(getBooksState, fromBooks.getSelected);
 
 
 /**
@@ -138,7 +137,7 @@ export const getSearchLoading = createSelector(getSearchState, fromSearch.getLoa
  * composes the search result IDs to return an array of books in the store.
  */
 export const getSearchResults = createSelector(getBookEntities, getSearchBookIds, (books, searchIds) => {
-  return searchIds.map(id => books[id]);
+  return searchIds.map(id => books[ id ]);
 });
 
 
@@ -150,7 +149,7 @@ export const getCollectionLoading = createSelector(getCollectionState, fromColle
 export const getCollectionBookIds = createSelector(getCollectionState, fromCollection.getIds);
 
 export const getBookCollection = createSelector(getBookEntities, getCollectionBookIds, (entities, ids) => {
-  return ids.map(id => entities[id]);
+  return ids.map(id => entities[ id ]);
 });
 
 export const isSelectedBookInCollection = createSelector(getCollectionBookIds, getSelectedBookId, (ids, selected) => {
